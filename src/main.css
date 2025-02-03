@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: #ffff;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./assets/img/Header.jpg");
+    background-size: cover;
+    height: 35vh;
+    
+}
+.navbar button{
+    border-radius: 0.4rem;
+    
+
+}
+
+
+
+.container ul {
+    list-style: none;
+    display: flex;
+    gap: 105px;
+    text-align: center;
+    color: #000000;
+    font-size: 25px;
+}
+
+.CardPizza{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    margin-top: 70px;
+}
+
+.CardPizza img{
+    border-radius: 2%;
+    border: 1px solid #000000;
+
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+}
+.pizzas{
+    border-left: 1px solid #000000b2;
+    border-right: 1px solid #000000b2;
+    border-radius: 2%;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    background-color: #000000bd;
+margin-top: 115px;
+}
