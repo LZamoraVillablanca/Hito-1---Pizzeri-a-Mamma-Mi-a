@@ -22,8 +22,6 @@
 
 }
 
-
-
 .container ul {
     list-style: none;
     display: flex;
@@ -63,4 +61,77 @@
     color: #ffff;
     background-color: #000000bd;
 margin-top: 115px;
+}
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  .card-content {
+    padding: 16px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .card-desc {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  
+  .card-ingredients {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 8px;
+  }
+  
+  .card-price {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 12px;
+  }
+  
+  .card-button {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .card-button:hover {
+    background: #c0392b;
+  }
+  .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  justify-content: center;
+  padding: 20px;
+}
+.cart-list{
+  padding-right: 60%;
 }

@@ -1,24 +1,20 @@
 import Navbar from './components/Navbar'
-import Home from './components/Home'
+/* import Home from './components/Home' */
 import Footer from './components/Footer'
-import Register from './components/register'
-import Login from './components/login'
+/* import Register from './components/register'
+import Login from './components/Login' */
+import Cart from './components/Cart'
 const App = () => {
-
-
-
   return (
     <>
       <Navbar />
-      {/*<Home />*/}
-      <Register />
-      {/*<Login />*/}
+      {/* <Home /> */}
+      <Cart />
+      {/* <Register /> */}
+      {/* <Login /> */}
       <Footer />
     </>
   )
-
-
-
 }
 
 export default App
