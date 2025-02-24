@@ -10,7 +10,7 @@ const Cart = () => {
         .map((item) =>
           item.id === id ? { ...item, count: item.count + amount } : item
         )
-        .filter((item) => item.count > 0) // Filtrar elementos con count > 0
+        .filter((item) => item.count > 0)
     )
   }
 
