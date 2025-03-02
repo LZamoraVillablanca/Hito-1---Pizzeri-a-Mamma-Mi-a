@@ -17,11 +17,6 @@
     height: 35vh;
     
 }
-.navbar button{
-    border-radius: 0.4rem;
-    
-
-}
 
 .container ul {
     list-style: none;
@@ -31,7 +26,10 @@
     color: #000000;
     font-size: 25px;
 }
-
+.navbar a{
+  text-decoration: none;
+  color: #000;
+}
 .CardPizza{
     display: flex;
     justify-content: center;
@@ -135,4 +133,18 @@ margin-top: 115px;
 }
 .cart-list{
   padding-right: 60%;
+}
+
+.Profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+}
+.Profile button{
+
+  border-radius: 5px;
+}
+.Profile p{
+  cursor: pointer;
 }

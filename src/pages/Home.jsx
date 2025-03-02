@@ -1,6 +1,6 @@
 import { formatPriceCLP } from '../assets/FormatNumber'
-import CardPizzas from './CardPizzas'
-import Header from './Header'
+import CardPizzas from '../components/CardPizzas'
+import Header from '../components/Header'
 import '../main.css'
 import { useState } from 'react'
 import { useEffect } from 'react'

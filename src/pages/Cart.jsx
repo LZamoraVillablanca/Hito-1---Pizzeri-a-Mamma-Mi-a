@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { pizzaCart } from './Pizzas/pizzas'
+import { pizzaCart } from '../components/Pizzas/pizzas'
 
 const Cart = () => {
   const [cart, setCart] = useState(pizzaCart)

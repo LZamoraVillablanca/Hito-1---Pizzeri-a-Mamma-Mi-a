@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { formatPriceCLP } from '../assets/FormatNumber'
 const Navbar = () => {
   const total = 25000
@@ -6,14 +7,15 @@ const Navbar = () => {
     <div className='container'>
       <nav className='navbar'>
         <ul>
-          <button><li>🍕Home</li></button>
-          <button><li>🔓Profile</li></button>
-          <button><li>🔒Logout</li></button>
-          <button><li>🔐Login</li></button>
-          <button><li>🔐Register</li></button>
-          <button><li>🛒Total:{formatPriceCLP(total)}</li></button>
+          <li><Link to='/'>🍕 Home</Link></li>
+          <li><Link to='/profile'>🔓 Profile</Link></li>
+          <li><Link to='/logout'>🔒 Logout</Link></li>
+          <li><Link to='/login'>🔐 Login</Link></li>
+          <li><Link to='/register'>🔐 Register</Link></li>
+          <li><Link to='/cart'>🛒 Total: {formatPriceCLP(total)}</Link></li>
         </ul>
       </nav>
+
     </div>
   )
 }
