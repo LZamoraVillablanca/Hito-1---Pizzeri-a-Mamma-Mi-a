@@ -1,4 +1,13 @@
+import React from 'react'
+import { useCart } from '../assets/Context/CartContext'
+
 const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
+  const { addProduct } = useCart()
+
+  const handleAddToCart = () => {
+    addProduct({ id, name, price, img, ingredients, desc })
+  }
+
   return (
     <div className='card'>
       <img src={img} alt={name} className='card-img' />
@@ -9,10 +18,9 @@ const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
           <strong>Ingredientes:</strong> {ingredients.join(', ')}
         </p>
         <span className='card-price'>{price}</span>
-        <button className='card-button'>Comprar!</button>
+        <button className='card-button' onClick={handleAddToCart}>Comprar!</button>
       </div>
     </div>
-
   )
 }
 

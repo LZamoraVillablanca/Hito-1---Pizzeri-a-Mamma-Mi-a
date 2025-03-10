@@ -2,8 +2,8 @@ import { formatPriceCLP } from '../assets/FormatNumber'
 import CardPizzas from '../components/CardPizzas'
 import Header from '../components/Header'
 import '../main.css'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+
 const Home = () => {
   const [pizzas, setPizzas] = useState([])
   const URL = 'http://localhost:5000/api/pizzas'
@@ -23,20 +23,22 @@ const Home = () => {
   }, [])
 
   console.log(pizzas)
-  return (
 
+  return (
     <div>
       <Header />
       <div className='cards-container'>
         {pizzas.map((pizza) => (
-          <CardPizzas
-            key={pizza.id}
-            name={pizza.name}
-            desc={pizza.desc}
-            ingredients={pizza.ingredients}
-            price={formatPriceCLP(pizza.price)}
-            img={pizza.img}
-          />
+          <div key={pizza.id} className='pizza-card'>
+            <CardPizzas
+              name={pizza.name}
+              desc={pizza.desc}
+              ingredients={pizza.ingredients}
+              price={formatPriceCLP(pizza.price)}
+              img={pizza.img}
+              id={pizza}
+            />
+          </div>
         ))}
       </div>
     </div>

@@ -8,24 +8,27 @@ import Login from './pages/Login'
 import Cart from './pages/Cart'
 import NotFound from './components/NotFound'
 import Profile from './pages/profile'
+import { CartProvider } from './assets/Context/CartContext'
+import { AuthProvider } from './assets/Context/AuthContext'
 const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/Pizza/p001' element={<OnePizza />} />
-          <Route path='/Profile' element={<Profile />} />
-          <Route path='/404' element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-
-    </>
+    <BrowserRouter>
+      <AuthProvider>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/pizza/p001' element={<OnePizza />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/404' element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </CartProvider>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 
