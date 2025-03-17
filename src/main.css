@@ -124,6 +124,10 @@ margin-top: 115px;
   .card-button:hover {
     background: #c0392b;
   }
+/*   .botonera{
+    display: flex;
+    justify-content: space-between;
+  } */
   .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

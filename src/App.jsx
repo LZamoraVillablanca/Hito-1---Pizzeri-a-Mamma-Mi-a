@@ -7,9 +7,11 @@ import Register from './pages/register'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
 import NotFound from './components/NotFound'
-import Profile from './pages/profile'
+import Profile from './pages/Profile'
 import { CartProvider } from './assets/Context/CartContext'
 import { AuthProvider } from './assets/Context/AuthContext'
+import RutaProtegida from './components/RutaProtegida'
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -22,7 +24,14 @@ const App = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/pizza/p001' element={<OnePizza />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route
+              path='/profile'
+              element={
+                <RutaProtegida>
+                  <Profile />
+                </RutaProtegida>
+              }
+            />
             <Route path='/404' element={<NotFound />} />
           </Routes>
           <Footer />

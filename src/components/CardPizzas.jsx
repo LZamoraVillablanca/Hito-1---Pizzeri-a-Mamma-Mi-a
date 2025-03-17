@@ -1,4 +1,3 @@
-import React from 'react'
 import { useCart } from '../assets/Context/CartContext'
 
 const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
@@ -18,7 +17,10 @@ const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
           <strong>Ingredientes:</strong> {ingredients.join(', ')}
         </p>
         <span className='card-price'>{price}</span>
-        <button className='card-button' onClick={handleAddToCart}>Comprar!</button>
+        <div className='botonera'>
+          <button className='card-button' onClick={handleAddToCart}>Comprar!</button>
+          {/* <button className='card-button'>más info!</button> por razones fuera de mi entendimiento no funcionó */}
+        </div>
       </div>
     </div>
   )
