@@ -1,10 +1,17 @@
+import { useNavigate } from 'react-router-dom'
 import { useCart } from '../assets/Context/CartContext'
 
-const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
+const CardPizza = ({ id, desc, ingredients, img, name, price }) => {
   const { addProduct } = useCart()
+  const navigate = useNavigate()
 
   const handleAddToCart = () => {
-    addProduct({ id, name, price, img, ingredients, desc })
+    addProduct({ id, name, price, img })
+  }
+
+  const handleMoreInfo = () => {
+    console.log(id)
+    navigate(`/pizza/${id}`)
   }
 
   return (
@@ -19,7 +26,7 @@ const CardPizza = ({ desc, id, img, ingredients, name, price }) => {
         <span className='card-price'>{price}</span>
         <div className='botonera'>
           <button className='card-button' onClick={handleAddToCart}>Comprar!</button>
-          {/* <button className='card-button'>más info!</button> por razones fuera de mi entendimiento no funcionó */}
+          <button className='card-button' onClick={handleMoreInfo}>más info!</button>
         </div>
       </div>
     </div>

@@ -36,8 +36,9 @@ const Home = () => {
               ingredients={pizza.ingredients}
               price={formatPriceCLP(pizza.price)}
               img={pizza.img}
-              id={pizza}
+              id={pizza.id}
             />
+
           </div>
         ))}
       </div>

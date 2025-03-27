@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useAuth } from '../assets/Context/AuthContext'
+import { useUserContext } from '../assets/Context/UserContext'
 import { useCart } from '../assets/Context/CartContext'
 
 const Navbar = () => {
-  const { isAuthenticated, login, logout } = useAuth()
+  const { isAuthenticated, logout } = useUserContext()
   const { total } = useCart()
 
   return (
@@ -20,7 +20,7 @@ const Navbar = () => {
               )
             : (
               <>
-                <li><Link to='/login' onClick={login}>🔐 Login</Link></li>
+                <li><Link to='/login'>🔐 Login</Link></li>
                 <li><Link to='/register'>🔐 Register</Link></li>
               </>
               )}

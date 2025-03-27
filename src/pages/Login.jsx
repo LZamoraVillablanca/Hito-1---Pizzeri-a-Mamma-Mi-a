@@ -1,49 +1,59 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useUserContext } from '../assets/Context/UserContext'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Login = () => {
-  const handleSubmit = (event) => {
-    event.preventDefault()
+  const { setIsAuthenticated, setUser } = useUserContext()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
-    const email = event.target.email.value
-    const password = event.target.password.value
-
+  const handleSubmit = (e) => {
+    e.preventDefault()
     if (!email || !password) {
-      alert('Todos los campos son obligatorios.')
+      setError('Todos los campos son obligatorios')
       return
     }
-
     if (password.length < 6) {
-      alert('La contraseña debe tener al menos 6 caracteres.')
+      setError('La contraseña debe tener al menos 6 caracteres')
       return
     }
-
-    alert('Inicio de sesión exitoso')
+    if (email === 'test@test.com' && password === '123123') {
+      setIsAuthenticated(true)
+      setUser({ email })
+      navigate('/profile')
+    } else {
+      setError('Credenciales incorrectas')
+    }
   }
 
   return (
-    <div className='container mt-5'>
-      <h2 className='text-center'>Login</h2>
-      <form onSubmit={handleSubmit} className='w-50 mx-auto'>
+    <div className='d-flex justify-content-center align-items-center vh-100 bg-light'>
+      <form className='bg-white p-4 rounded shadow w-25' onSubmit={handleSubmit}>
+        <h2 className='text-center mb-4'>Iniciar Sesión</h2>
+        {error && <p className='text-danger text-center'>{error}</p>}
         <div className='mb-3'>
-          <label className='form-label'>Email</label>
+          <label className='form-label'>Correo Electrónico</label>
           <input
             type='email'
-            name='email'
             className='form-control'
-            placeholder='Ingrese su email'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className='mb-3'>
           <label className='form-label'>Contraseña</label>
           <input
             type='password'
-            name='password'
             className='form-control'
-            placeholder='Ingrese su contraseña'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <button type='submit' className='btn btn-primary w-100'>
-          Iniciar sesión
+          Iniciar Sesión
         </button>
       </form>
     </div>

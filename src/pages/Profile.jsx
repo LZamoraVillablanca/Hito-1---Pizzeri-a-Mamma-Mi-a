@@ -1,15 +1,15 @@
-import { useAuth } from '../assets/Context/AuthContext'
+import { useUserContext } from '../assets/Context/UserContext'
 
 const Profile = () => {
-  const { user, logout } = useAuth()
+  const { isAuthenticated, logout } = useUserContext() // Usamos el contexto UserContext
 
-  if (!user) {
+  if (!isAuthenticated) {
     return <p>Usuario no autenticado</p>
   }
 
   return (
     <div className='Profile'>
-      <h1>Hola usuario: {user.email}</h1>
+      <h1>Hola usuario</h1> {/* Puedes personalizarlo según lo que desees mostrar */}
       <br />
       <p>¿No es tu cuenta?</p>
       <p>

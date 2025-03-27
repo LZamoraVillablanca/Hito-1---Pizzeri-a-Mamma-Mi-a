@@ -1,8 +1,10 @@
 import React from 'react'
 import { useCart } from '../assets/Context/CartContext'
+import { useUserContext } from '../assets/Context/UserContext'
 
 const Cart = () => {
   const { cart, handleQuantityChange, total } = useCart()
+  const { isAuthenticated } = useUserContext()
 
   return (
     <div className='cart'>
@@ -20,7 +22,7 @@ const Cart = () => {
         ))}
       </ul>
       <h3>Total: {total}</h3>
-      <button disabled={cart.length === 0}>Pagar</button>
+      <button disabled={cart.length === 0 || !isAuthenticated}>Pagar</button>
     </div>
   )
 }
