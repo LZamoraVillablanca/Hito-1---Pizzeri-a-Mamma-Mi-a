@@ -15,9 +15,8 @@ import Details from './pages/details'
 
 const App = () => {
   return (
-    <UserProvider>
-
-      <BrowserRouter>
+    <BrowserRouter>
+      <UserProvider> {/* Ahora dentro de BrowserRouter */}
         <CartProvider>
           <Navbar />
           <Routes>
@@ -27,20 +26,13 @@ const App = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/pizza/p001' element={<OnePizza />} />
             <Route path='/pizza/:id' element={<Details />} />
-            <Route
-              path='/profile'
-              element={
-                <RutaProtegida>
-                  <Profile />
-                </RutaProtegida>
-              }
-            />
+            <Route path='/profile' element={<RutaProtegida><Profile /></RutaProtegida>} />
             <Route path='/404' element={<NotFound />} />
           </Routes>
           <Footer />
         </CartProvider>
-      </BrowserRouter>
-    </UserProvider>
+      </UserProvider>
+    </BrowserRouter>
   )
 }
 

@@ -19,7 +19,6 @@ const CardPizza = ({ id, desc, ingredients, img, name, price }) => {
       <img src={img} alt={name} className='card-img' />
       <div className='card-content'>
         <h3 className='card-title'>{name}</h3>
-        <p className='card-desc'>{desc}</p>
         <p className='card-ingredients'>
           <strong>Ingredientes:</strong> {ingredients.join(', ')}
         </p>

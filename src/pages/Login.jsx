@@ -4,13 +4,13 @@ import { useUserContext } from '../assets/Context/UserContext'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Login = () => {
-  const { setIsAuthenticated, setUser } = useUserContext()
+  const { login } = useUserContext()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!email || !password) {
       setError('Todos los campos son obligatorios')
@@ -20,12 +20,11 @@ const Login = () => {
       setError('La contraseña debe tener al menos 6 caracteres')
       return
     }
-    if (email === 'test@test.com' && password === '123123') {
-      setIsAuthenticated(true)
-      setUser({ email })
+    try {
+      await login(email, password)
       navigate('/profile')
-    } else {
-      setError('Credenciales incorrectas')
+    } catch (error) {
+      setError(error.message)
     }
   }
 

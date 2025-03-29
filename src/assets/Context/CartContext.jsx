@@ -44,6 +44,10 @@ export const CartProvider = ({ children }) => {
     )
   }
 
+  const clearCart = () => {
+    setCart([])
+  }
+
   const total = cart.reduce((sum, item) => sum + item.price * item.count, 0)
 
   return (
@@ -51,6 +55,7 @@ export const CartProvider = ({ children }) => {
       cart: cart.map(item => ({ ...item, priceFormatted: formatPrice(item.price) })),
       addProduct,
       handleQuantityChange,
+      clearCart,
       total: formatPrice(total)
     }}
     >

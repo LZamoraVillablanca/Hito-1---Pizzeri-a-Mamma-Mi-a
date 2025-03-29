@@ -3,8 +3,51 @@ import { useCart } from '../assets/Context/CartContext'
 import { useUserContext } from '../assets/Context/UserContext'
 
 const Cart = () => {
-  const { cart, handleQuantityChange, total } = useCart()
+  const { cart, handleQuantityChange, total, clearCart } = useCart()
   const { isAuthenticated } = useUserContext()
+
+  const checkout = async () => {
+    if (!isAuthenticated) {
+      alert('Debes estar autenticado para realizar el pago')
+      return
+    }
+
+    const token = localStorage.getItem('token')
+    if (!token) {
+      alert('Token no encontrado. Debes iniciar sesión para continuar.')
+      return
+    }
+
+    const checkoutData = {
+      items: cart.map(item => ({
+        id: item.id,
+        name: item.name,
+        quantity: item.count,
+        price: item.priceFormatted
+      })),
+      total
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/api/checkouts/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(checkoutData)
+      })
+
+      if (!response.ok) {
+        throw new Error('Hubo un error al procesar el pago')
+      }
+      alert(`Pago realizado con éxito! Tu número de pedido es: ${Math.floor(Math.random() * 9000) + 1000}`)
+
+      clearCart()
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   return (
     <div className='cart'>
@@ -22,7 +65,12 @@ const Cart = () => {
         ))}
       </ul>
       <h3>Total: {total}</h3>
-      <button disabled={cart.length === 0 || !isAuthenticated}>Pagar</button>
+      <button
+        disabled={cart.length === 0 || !isAuthenticated}
+        onClick={checkout}
+      >
+        {isAuthenticated ? 'Pagar' : 'Regístrese para continuar'}
+      </button>
     </div>
   )
 }
